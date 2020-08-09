@@ -1,7 +1,5 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
-ARG USE_CUDA=ON
-
 ENV DEBIAN_FRONTEND noninteractive
 # Core Linux Deps
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --fix-missing --no-install-recommends apt-utils \
@@ -99,7 +97,9 @@ RUN ${PIP} --no-cache-dir install --upgrade \
     scikit-learn  \
     matplotlib    \
     pyinstrument
-                                                                               
+
+ARG USE_CUDA=OFF
+                                                               
 RUN git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv_contrib.git && \
     git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv.git         && \
     cd opencv && mkdir build && cd build                                            && \
