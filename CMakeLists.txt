@@ -13,7 +13,7 @@ if(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 endif()
 
-OPTION(WITH_CUDA "Option description" OFF) # Disabled by default
+OPTION(WITH_CUDA "Enable CUDA support" OFF) # Disabled by default
 IF(WITH_CUDA)
     ADD_DEFINITIONS(-DUSE_CUDA)
 ENDIF()
