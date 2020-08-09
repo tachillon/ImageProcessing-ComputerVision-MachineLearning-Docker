@@ -25,10 +25,10 @@ int main(int argc, char *argv[])
     cv::cuda::GpuMat gpu_img;
     cv::cuda::GpuMat gpu_out;
     gpu_img.upload(img);
-    cv::cuda::resize(gpu_img, gpu_out, cv::Size(),0.5,0.5,cv::INTER_CUBIC);
+    cv::cuda::resize(gpu_img,gpu_out,cv::Size(),0.5,0.5,cv::INTER_CUBIC);
     gpu_out.download(out);
 #else
-    cv::resize(img,out, cv::Size(),0.5,0.5,cv::INTER_CUBIC);
+    cv::resize(img,out,cv::Size(),0.5,0.5,cv::INTER_CUBIC);
 #endif
     std::cout << "... All is ok!" << std::endl;
     return 0;
