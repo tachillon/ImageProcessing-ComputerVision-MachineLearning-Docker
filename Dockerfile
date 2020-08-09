@@ -99,12 +99,10 @@ RUN ${PIP} --no-cache-dir install --upgrade \
     scikit-learn  \
     matplotlib    \
     pyinstrument
- 
-WORKDIR /                                                                              
+                                                                               
 RUN git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv_contrib.git && \
     git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv.git         && \
-    cd opencv                                                                       && \
-    mkdir build && cd build                                                         && \
+    cd opencv && mkdir build && cd build                                            && \
     cmake ..                                                    \
           -DBUILD_TIFF=ON                                       \
           -DBUILD_opencv_java=OFF                               \
@@ -121,6 +119,8 @@ RUN git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv_contrib.
           -DWITH_TBB=ON                                         \
           -DWITH_EIGEN=ON                                       \
           -DWITH_V4L=ON                                         \
+          -DBUILD_TESTS=OFF                                     \
+          -DBUILD_PERF_TESTS=OFF                                \
           -DCMAKE_BUILD_TYPE=RELEASE                            \
           -DCMAKE_INSTALL_PREFIX=/usr/local                     \
           -D PYTHON3_EXECUTABLE=$(which python3)                \
@@ -138,8 +138,6 @@ RUN git clone --branch 4.4.0 --depth 1 https://github.com/opencv/opencv_contrib.
     ldconfig               && \
     rm -rf /opencv         && \
     rm -rf /opencv_contrib
-
-WORKDIR /
 
 # dlib
 # RUN cd ~                                                                             && \
