@@ -86,6 +86,8 @@ RUN apt-get update && apt-get install -y \
     ${PYTHON} \
     ${PYTHON}-pip
 
+RUN pip3 install --upgrade pip
+
 RUN ${PIP} --no-cache-dir install --upgrade \
     pip           \
     setuptools    \
